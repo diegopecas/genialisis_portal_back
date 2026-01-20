@@ -8,11 +8,24 @@ class CorsMiddleware
 {
     public static function handle()
     {
+        // Definir orígenes permitidos
+        $allowedOrigins = [
+            'http://localhost:4400',  // Angular dev
+            'http://localhost:4200',  // Angular dev alternativo
+            'https://genialisis.co',  // Producción
+            'https://www.genialisis.co', // Producción con www
+        ];
+        
+        // Si existe la constante ALLOWED_ORIGINS, usarla
+        if (defined('ALLOWED_ORIGINS')) {
+            $allowedOrigins = array_merge($allowedOrigins, ALLOWED_ORIGINS);
+        }
+        
         // Obtener el origen de la petición
         $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
         
         // Verificar si el origen está en la lista de permitidos
-        if (in_array($origin, ALLOWED_ORIGINS)) {
+        if (in_array($origin, $allowedOrigins)) {
             header("Access-Control-Allow-Origin: $origin");
         }
         
