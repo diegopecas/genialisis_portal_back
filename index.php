@@ -16,6 +16,9 @@ date_default_timezone_set(TIMEZONE);
 // Cargar FlightPHP
 require 'flight/Flight.php';
 
+// Cargar autoload de Composer (para mPDF y otras dependencias)
+require_once __DIR__ . '/vendor/autoload.php';
+
 // Aplicar middleware de CORS ANTES de cualquier otra cosa
 require_once 'middleware/CorsMiddleware.php';
 CorsMiddleware::handle();
