@@ -1,25 +1,31 @@
 <?php
 /**
- * Configuración de entorno para Lumen API
- * Variables de conexión a base de datos
+ * Configuración de Entorno - GENIALISIS
  */
 
-// Configuración de base de datos
+// Base de datos
 define('DB_HOST', '92.205.2.161');
-define('DB_NAME', 'lumen');
-define('DB_USERNAME', 'lumen-admin');
-define('DB_PASSWORD', 'm_deEi1U2Bjl');
+define('DB_NAME', 'genialisis-portal-prod');
+define('DB_USERNAME', 'admin-genialisis-portal-prod');
+define('DB_PASSWORD', 'diCPi@SZ{8pr');
 define('DB_CHARSET', 'utf8mb4');
-
-// Construir DSN
 define('DB_DSN', 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET);
-
-// Configuración de CORS - Dominios permitidos
-define('ALLOWED_ORIGINS', [
-    'http://localhost:4200',
-    'https://liceolumen.com',
-    'https://www.liceolumen.com'
-]);
 
 // Zona horaria
 define('TIMEZONE', 'America/Bogota');
+
+// URLs
+define('API_URL', 'http://localhost:9997');
+define('FRONTEND_URL', 'http://localhost:4700');
+
+// CORS permitidos
+define('ALLOWED_ORIGINS', [
+    'http://localhost:4700',
+    'https://genialisis.com',
+    'https://www.genialisis.com'
+]);
+
+// Rate limiting
+define('RATE_LIMIT_ENABLED', true);
+define('RATE_LIMIT_MAX_REQUESTS', 5);
+define('RATE_LIMIT_TIME_WINDOW', 3600); // 1 hora en segundos
